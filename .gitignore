@@ -1,0 +1,43 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.dev.vars
+
+# JavaScript
+node_modules/
+dist/
+build/
+.output/
+.next/
+.nuxt/
+.vite/
+.turbo/
+.wrangler/
+.vercel/
+coverage/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+

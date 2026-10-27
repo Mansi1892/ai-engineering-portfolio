@@ -1,0 +1,43 @@
+name: Validate portfolio
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  repository-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check Python syntax
+        run: |
+          python -m py_compile \
+            projects/smart-meal-ai/api.py \
+            projects/smart-meal-ai/agent.py \
+            projects/smart-meal-ai/database.py \
+            projects/smart-meal-ai/tools.py \
+            projects/smart-meal-ai/telegram_bot.py \
+            projects/smart-meal-ai/whatsapp_bot.py \
+            projects/smart-meal-ai/onboarding_utils.py \
+            projects/smart-meal-ai/config.py \
+            projects/ai-automation/lead-scoring-n8n/pipeline.py
+      - name: Validate JSON documents
+        run: |
+          find . -type f -name '*.json' -not -path '*/node_modules/*' -print0 \
+            | xargs -0 -n1 node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))'
+      - name: Reject high-confidence secret formats
+        run: |
+          ! grep -RIE \
+            --exclude-dir=.git --exclude='*.lock' --exclude='package-lock.json' \
+            '(sk-(proj-)?[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,})' .
+
