@@ -4,7 +4,7 @@
 
 I am a senior software engineer at SAP Labs working on SAP SuccessFactors, with more than eight years of experience in enterprise SaaS, Java backend engineering, distributed systems, and cloud applications. I am building toward AI engineering roles by combining that foundation with practical work in Python, FastAPI, LLM integration, agent orchestration, tool calling, and retrieval-augmented generation.
 
-[Portfolio website](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
+[Live portfolio website](https://mansi-ai-portfolio.vercel.app) · [Website source](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
 
 > This repository is source-first: project claims are tied to included implementations. Smart Meal AI is my original project. Other projects are included with permission from [Rochak Singhal's AI-PM-Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio) and are explicitly labeled as contributed/adapted work. See [ATTRIBUTION.md](./ATTRIBUTION.md).
 
@@ -107,6 +107,8 @@ AI-Portfolio/
 ## Run locally
 
 ### Portfolio website
+
+Public URL: [mansi-ai-portfolio.vercel.app](https://mansi-ai-portfolio.vercel.app)
 
 ```bash
 cd portfolio-website
