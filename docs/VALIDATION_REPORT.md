@@ -190,17 +190,9 @@ Placeholder `.env.example` files replace the removed configuration. Owners shoul
 - `gh auth status`: authenticated active account is `Mansi1892`.
 - Preflight lookup: the target repository did not exist at validation time.
 - Local repository: independent Git history at `~/projects/AI-Portfolio`.
-- Remote repository creation and push: **not performed**, as explicitly required pending approval.
-- Final public GitHub URL: unavailable until approval and publication.
+- Remote repository creation and push: completed after explicit owner approval.
+- Final public GitHub URL: <https://github.com/Mansi1892/AI-Portfolio>
 
-## 13. Publication sequence after approval
+## 13. Publication result
 
-After the owner reviews the local repository and explicitly approves publication:
-
-```bash
-cd ~/projects/AI-Portfolio
-gh repo create Mansi1892/AI-Portfolio --public --source=. --remote=origin --push
-```
-
-Do not run that command until approval is given.
-
+The repository was created as a public, independent GitHub repository—not a fork—and the validated `main` branch was pushed after explicit approval.

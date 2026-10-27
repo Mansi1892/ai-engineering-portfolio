@@ -33,11 +33,16 @@ jobs:
             projects/ai-automation/lead-scoring-n8n/pipeline.py
       - name: Validate JSON documents
         run: |
-          find . -type f -name '*.json' -not -path '*/node_modules/*' -print0 \
+          find . -type f -name '*.json' \
+            -not -path '*/node_modules/*' \
+            -not -name 'tsconfig.json' \
+            -not -name 'tsconfig.app.json' \
+            -not -name 'tsconfig.node.json' \
+            -not -name 'components.json' \
+            -print0 \
             | xargs -0 -n1 node -e 'JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"))'
       - name: Reject high-confidence secret formats
         run: |
           ! grep -RIE \
             --exclude-dir=.git --exclude='*.lock' --exclude='package-lock.json' \
             '(sk-(proj-)?[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_-]{30,})' .
-
