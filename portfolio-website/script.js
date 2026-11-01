@@ -4,6 +4,7 @@ const projects = [
   {
     name: "ConsultFlow AI",
     category: "agentic",
+    aiFocus: "RAG system",
     description: "A five-gate consulting deck pipeline with institutional RAG, evaluation stages, human approvals, and Google Slides delivery.",
     tags: ["RAG", "n8n", "Gemini", "Supabase"],
     path: "projects/rag-agentic/consultflow-ai",
@@ -13,6 +14,7 @@ const projects = [
   {
     name: "Knoxx Outbound Intelligence",
     category: "agentic",
+    aiFocus: "Agentic research workflow",
     description: "Evidence-backed account research, fit scoring, buying-committee discovery, guarded outreach, and n8n evaluation workflows.",
     tags: ["Agents", "React", "Supabase", "n8n"],
     path: "projects/ai-automation/knoxx-outbound-intelligence-n8n",
@@ -22,6 +24,7 @@ const projects = [
   {
     name: "AI Customer Support Chatbot",
     category: "agentic",
+    aiFocus: "LLM support workflow",
     description: "An importable n8n workflow for intent classification, autonomous support responses, escalation, and interaction logging.",
     tags: ["n8n", "LLM", "Webhook"],
     path: "projects/ai-automation/ai-customer-support-chatbot-n8n",
@@ -30,6 +33,7 @@ const projects = [
   {
     name: "Webhook Chatbot Skeleton",
     category: "agentic",
+    aiFocus: "LangChain agent",
     description: "A minimal LangChain-based n8n agent skeleton with a webhook interface, response handling, and extension points for tools and memory.",
     tags: ["n8n", "LangChain", "Agents"],
     path: "projects/ai-automation/webhook-chatbot-n8n",
@@ -38,6 +42,7 @@ const projects = [
   {
     name: "Job Application Bot",
     category: "automation",
+    aiFocus: "LLM automation",
     description: "An n8n workflow for collecting roles, matching profile criteria, tailoring application material, and sending daily digests.",
     tags: ["n8n", "Automation", "LLM"],
     path: "projects/ai-automation/job-application-bot-n8n",
@@ -46,14 +51,16 @@ const projects = [
   {
     name: "Resilient Lead Scoring",
     category: "automation",
+    aiFocus: "Structured LLM pipeline",
     description: "A fault-tolerant CSV-to-Supabase scoring pipeline with structured LLM stages, guardrails, review queues, and a React operator UI.",
-    tags: ["n8n", "Python", "React", "Supabase"],
+    tags: ["n8n", "LLM", "Python", "Supabase"],
     path: "projects/ai-automation/lead-scoring-n8n",
     mark: "LS",
   },
   {
     name: "Stock Analyser Agent",
     category: "automation",
+    aiFocus: "LLM analysis workflow",
     description: "An importable workflow for technical and sentiment analysis that produces structured stock briefs for scheduled delivery.",
     tags: ["n8n", "Market data", "LLM"],
     path: "projects/ai-automation/stock-analyser-agent-n8n",
@@ -129,6 +136,7 @@ const projects = [
   {
     name: "SentiSum Diagnostic",
     category: "application",
+    aiFocus: "Anthropic-powered diagnostic",
     description: "A lightweight pre-sales diagnostic that maps CX pain points to capabilities and calls a serverless API for report generation.",
     tags: ["JavaScript", "Vercel", "Anthropic API"],
     path: "projects/ai-applications/sentisum-diagnostic",
@@ -138,6 +146,7 @@ const projects = [
 ];
 
 const projectGrid = document.querySelector("[data-project-grid]");
+const highlightedAiTags = new Set(["RAG", "Agents", "LLM", "LangChain", "Gemini", "Anthropic API"]);
 
 function projectCard(project, index) {
   const visual = project.image
@@ -152,9 +161,10 @@ function projectCard(project, index) {
           <span class="ownership contributed">Contributed / adapted</span>
           <span>${String(index + 2).padStart(2, "0")}</span>
         </div>
+        ${project.aiFocus ? `<div class="project-ai-focus"><span aria-hidden="true"></span>${project.aiFocus}</div>` : ""}
         <h3>${project.name}</h3>
         <p>${project.description}</p>
-        <div class="project-tags">${project.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
+        <div class="project-tags">${project.tags.map((tag) => `<span${highlightedAiTags.has(tag) ? ' class="ai-tag"' : ""}>${tag}</span>`).join("")}</div>
         <a class="project-card-link" href="${repoBase}/${project.path}" target="_blank" rel="noreferrer">
           Inspect source <span aria-hidden="true">↗</span>
         </a>
