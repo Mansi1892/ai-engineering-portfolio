@@ -2,7 +2,7 @@
 
 > An end-to-end AI system that automates consulting deck creation by combining a 5-gate agentic pipeline with a RAG layer trained on institutional knowledge — so every junior analyst produces output informed by your firm's most senior consultants.
 
-**💻 Source Code:** [ConsultFlow AI in Mansi's portfolio](https://github.com/Mansi1892/AI-Portfolio/tree/main/projects/rag-agentic/consultflow-ai)
+**💻 Source Code:** [ConsultFlow AI in Mansi's portfolio](https://github.com/Mansi1892/ai-engineering-portfolio/tree/main/projects/rag-agentic/consultflow-ai)
 
 ---
 

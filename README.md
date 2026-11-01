@@ -4,7 +4,7 @@
 
 I am a senior software engineer at SAP Labs working on SAP SuccessFactors, with more than eight years of experience in enterprise SaaS, Java backend engineering, distributed systems, and cloud applications. I am building toward AI engineering roles by combining that foundation with practical work in Python, FastAPI, LLM integration, agent orchestration, tool calling, and retrieval-augmented generation.
 
-[Live portfolio website](https://mansi1892.github.io/AI-Portfolio/) · [Download resume](./portfolio-website/assets/Mansi_Gangwar_Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/mansi-gangwar-588551136) · [Email](mailto:mansigangwar18@gmail.com)
+[Live portfolio website](https://mansi1892.github.io/ai-engineering-portfolio/) · [Download resume](./portfolio-website/assets/Mansi_Gangwar_Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/mansi-gangwar-588551136) · [Email](mailto:mansigangwar18@gmail.com)
 
 [Website source](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
 
@@ -135,7 +135,7 @@ AI-Portfolio/
 
 ### Portfolio website
 
-Public URL: [mansi1892.github.io/AI-Portfolio](https://mansi1892.github.io/AI-Portfolio/)
+Public URL: [mansi1892.github.io/ai-engineering-portfolio](https://mansi1892.github.io/ai-engineering-portfolio/)
 
 ```bash
 cd portfolio-website

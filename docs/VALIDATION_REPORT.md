@@ -186,12 +186,12 @@ Placeholder `.env.example` files replace the removed configuration. Owners shoul
 
 ## 12. GitHub repository status
 
-- Requested target: `https://github.com/Mansi1892/AI-Portfolio`
+- Requested target: `https://github.com/Mansi1892/ai-engineering-portfolio`
 - `gh auth status`: authenticated active account is `Mansi1892`.
 - Preflight lookup: the target repository did not exist at validation time.
 - Local repository: independent Git history at `~/projects/AI-Portfolio`.
 - Remote repository creation and push: completed after explicit owner approval.
-- Final public GitHub URL: <https://github.com/Mansi1892/AI-Portfolio>
+- Final public GitHub URL: <https://github.com/Mansi1892/ai-engineering-portfolio>
 
 ## 13. Publication result
 

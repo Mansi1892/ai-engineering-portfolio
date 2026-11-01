@@ -285,6 +285,6 @@ If 30% of 1,000 daily requests reuse fresh evidence, plan for 700 full runs and 
 
 **Recommended next decision:** run a 25-account assisted pilot. Compare AI briefs with sales review, measure research time, qualified-account precision, citation quality and cost per accepted account, then decide whether to automate more.
 
-**Portfolio repository:** `Mansi1892/AI-Portfolio`
+**Portfolio repository:** `Mansi1892/ai-engineering-portfolio`
 **Architecture source:** `docs/miro-architecture.md`  
 **Interview guide:** `docs/workflow-interview-guide.md`

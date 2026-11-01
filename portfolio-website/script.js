@@ -1,4 +1,4 @@
-const repoBase = "https://github.com/Mansi1892/AI-Portfolio/tree/main";
+const repoBase = "https://github.com/Mansi1892/ai-engineering-portfolio/tree/main";
 
 const projects = [
   {
