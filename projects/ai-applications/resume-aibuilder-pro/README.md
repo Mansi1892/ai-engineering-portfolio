@@ -24,4 +24,4 @@ Step 4: Export          → download the tailored version
 ATS systems reject good candidates because the keywords don't match. This tool fixes that at scale — one base resume, infinite tailored versions.
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

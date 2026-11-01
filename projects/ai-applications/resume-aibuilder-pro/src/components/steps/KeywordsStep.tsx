@@ -61,7 +61,7 @@ export const KeywordsStep = () => {
       formData.append("cv_file", uploadedFile);
 
       const res = await fetch(
-        "https://rochak.app.n8n.cloud/webhook/job-application",
+        "https://your-n8n.example.com/webhook/job-application",
         {
           method: "POST",
           body: formData,

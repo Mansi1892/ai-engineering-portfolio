@@ -57,7 +57,7 @@ function Shell({ children, onNew }) {
         <div className="sidebar-foot">
           <button className="nav-item"><Icon name="settings" />Rules &amp; catalogue</button>
           <div className="demo-notice"><span className="pulse" />Safe demo mode<strong>External sends are allowlisted</strong></div>
-          <div className="profile"><div className="avatar">RS</div><div><strong>Rochak Singhal</strong><span>Sales operator</span></div></div>
+          <div className="profile"><div className="avatar">MG</div><div><strong>Mansi Gangwar</strong><span>Sales operator</span></div></div>
         </div>
       </aside>
       <main className="main">

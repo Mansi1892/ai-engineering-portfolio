@@ -51,7 +51,7 @@ Create a Gamma-ready PPT outline and final presentation answering the four case-
 - [ ] Final Miro share URL (manual publication; connector unavailable).
 - [x] Final Lovable URL: `https://knoxx-insight-quest.lovable.app`.
 - [ ] Configure the production `VITE_SUPABASE_PUBLISHABLE_KEY`, republish and run an authenticated live-data smoke test; current deployment is fixture-only.
-- [x] Deck uses Rochak Singhal and is optimized for a ten-minute walkthrough; adjust only if the actual interview format differs.
+- [x] Deck uses Mansi Gangwar and is optimized for a ten-minute walkthrough; adjust only if the actual interview format differs.
 - [ ] Final screenshots after live frontend publication.
 - [x] Publish the revised presentation at `https://docs.google.com/presentation/d/1rv1xUF5RiuSoF6CzxqHfBlhyvNNfFVDlW1JK5qAW9HM/edit`.
 

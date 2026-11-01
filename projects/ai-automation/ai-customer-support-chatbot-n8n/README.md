@@ -19,4 +19,4 @@
 - n8n · OpenAI / Gemini · Webhook trigger
 
 ---
-**Built by Rochak Singhal** — [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

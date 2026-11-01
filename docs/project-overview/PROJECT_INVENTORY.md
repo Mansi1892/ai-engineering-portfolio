@@ -55,18 +55,10 @@ This inventory is based on the copied source, manifests, workflow exports, and R
 
 ## Source repository submodule status
 
-Repository A declared:
-
-```text
-Vibe Coding projects/repo-showcase-quest
-https://github.com/rochaksinghal01/repo-showcase-quest.git
-```
-
-Recursive initialization returned “Repository not found” for that URL. Its content was therefore not accessible and was not copied. Repository B declared no submodules. The new repository has no `.gitmodules` file and no unresolved gitlink entries.
+An upstream source repository declared `repo-showcase-quest` as a submodule. Recursive initialization returned “Repository not found” for its configured remote, so its content was not accessible and was not copied. The Smart Meal AI source declared no submodules. The new repository has no `.gitmodules` file and no unresolved gitlink entries.
 
 ## Notes on claims and ownership
 
 - Smart Meal AI is original work from Mansi Gangwar's source repository.
 - All other projects in this inventory are contributed/adapted with permission and retain project documentation from the original source.
 - Original project READMEs may describe their creator's context or outcomes. Those statements are not presented as Mansi Gangwar's employment history or achievements in the portfolio website or main README.
-

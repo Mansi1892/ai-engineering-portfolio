@@ -8,7 +8,7 @@ This project is an empty TanStack Start starter. Nothing from the described repo
 - One hand-written client in `src/integrations/supabase/client.ts` reads `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`, pointing only at `sbbqtvhyfdxywkanwldb`.
 - No migrations, no SQL, no table creation. All reads go through the logged-in session so your existing RLS applies. All privileged writes go through your three Edge Functions.
 - Browser bundle carries the publishable key only. No service-role or provider secret anywhere.
-- Needed from you: the publishable key for `sbbqtvhyfdxywkanwldb` (paste it and I'll put it in `.env` alongside `VITE_DEMO_MODE=true` and `VITE_SAFE_TEST_EMAIL=rochak.singhal@gmail.com`).
+- Needed from you: the publishable key for `sbbqtvhyfdxywkanwldb` (paste it and I'll put it in `.env` alongside `VITE_DEMO_MODE=true` and `VITE_SAFE_TEST_EMAIL=safe-test@example.com`).
 
 ## What gets built
 

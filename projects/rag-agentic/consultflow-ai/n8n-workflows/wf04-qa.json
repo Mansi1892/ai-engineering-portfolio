@@ -218,7 +218,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://rochak01.app.n8n.cloud/webhook/delivery",
+        "url": "https://your-n8n.example.com/webhook/delivery",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -303,7 +303,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://rochak01.app.n8n.cloud/webhook/qa-review",
+        "url": "https://your-n8n.example.com/webhook/qa-review",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [

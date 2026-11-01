@@ -14,4 +14,4 @@ Enterprise SaaS sales cycles are long because prospects don't immediately see fi
 - Vercel serverless API for report generation
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

@@ -52,7 +52,7 @@
     },
     {
       "parameters": {
-        "sendTo": "rochak.singhal@gmail.com",
+        "sendTo": "test-recipient@example.com",
         "subject": "=Stock Analysis of  {{ $(\"When chat message received\").item.json.chatInput }}",
         "message": "={{ $json.output }}",
         "options": {}

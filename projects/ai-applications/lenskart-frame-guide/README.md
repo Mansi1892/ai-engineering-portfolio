@@ -21,4 +21,4 @@ Users answer preference questions → AI recommends frames via swipeable cards �
 Built while working as PM at Lenskart, where I owned the AI personalisation roadmap. The in-store RFID + AI system (Project Handheld) drove **store conversion +4.5% and AOV +6%** across a 10-store pilot.
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

@@ -28,4 +28,4 @@ Ask Kyo replaces dashboard navigation with natural language. Users ask "What are
 Built as a product design prototype while working as AI PM at Sentisum. **Impact: +40% product adoption, measurable reduction in churn risk.**
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

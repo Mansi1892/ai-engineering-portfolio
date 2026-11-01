@@ -4,7 +4,7 @@
 
 Technical interview case study · portfolio build
 
-**Presenter:** Rochak Singhal  
+**Presenter:** Mansi Gangwar
 **Demo mode:** Real prospects blocked; Gmail is forced to an owned test inbox.
 
 ---
@@ -285,6 +285,6 @@ If 30% of 1,000 daily requests reuse fresh evidence, plan for 700 full runs and 
 
 **Recommended next decision:** run a 25-account assisted pilot. Compare AI briefs with sales review, measure research time, qualified-account precision, citation quality and cost per accepted account, then decide whether to automate more.
 
-**Portfolio repository:** `rochaksinghal01/AI-PM-Portfolio`  
+**Portfolio repository:** `Mansi1892/AI-Portfolio`
 **Architecture source:** `docs/miro-architecture.md`  
 **Interview guide:** `docs/workflow-interview-guide.md`

@@ -193,7 +193,7 @@ def build_deck():
     add_text(slide, "AI-powered account research, ingredient qualification and safe outreach", .7, 1.62, 10.7, .8, 23, "CBD5E1")
     rect(slide, .7, 2.75, 2.55, .42, ORANGE, ORANGE)
     add_text(slide, "TECHNICAL INTERVIEW CASE STUDY", .84, 2.85, 2.28, .2, 9, WHITE, True)
-    add_text(slide, "Rochak Singhal", .7, 5.72, 4.0, .4, 18, WHITE, True)
+    add_text(slide, "Mansi Gangwar", .7, 5.72, 4.0, .4, 18, WHITE, True)
     add_text(slide, "One company per run · evidence before judgment · humans approve outreach", .7, 6.16, 9.5, .35, 14, "94A3B8")
     footer(slide, 1, dark=True)
 

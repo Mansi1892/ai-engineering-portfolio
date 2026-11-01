@@ -2,7 +2,7 @@
 
 > An end-to-end AI system that automates consulting deck creation by combining a 5-gate agentic pipeline with a RAG layer trained on institutional knowledge — so every junior analyst produces output informed by your firm's most senior consultants.
 
-**🔗 Live Demo:** [tanstack-start-app.rochak-singhal.workers.dev](https://tanstack-start-app.rochak-singhal.workers.dev) · **💻 Source Code:** [github.com/rochaksinghal01/consultflow-ai](https://github.com/rochaksinghal01/consultflow-ai)
+**💻 Source Code:** [ConsultFlow AI in Mansi's portfolio](https://github.com/Mansi1892/AI-Portfolio/tree/main/projects/rag-agentic/consultflow-ai)
 
 ---
 
@@ -177,7 +177,6 @@ Each stage → [Update Supabase] + [Eval Score → Insert eval_logs]
 
 ---
 
-## Built By
+## Ownership
 
-**Rochak Singhal** — AI Product Manager
-[LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+This is a contributed/adapted project included with permission. It is not presented as Mansi Gangwar's original work or professional employment experience.

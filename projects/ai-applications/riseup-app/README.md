@@ -20,4 +20,4 @@ RiseUp replaces the dumb alarm with a contextual morning experience. When you wa
 - Vercel deployment
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

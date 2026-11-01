@@ -4,8 +4,8 @@
 
 - **Live frontend:** https://knoxx-insight-quest.lovable.app
 - **Final Google Slides:** https://docs.google.com/presentation/d/1rv1xUF5RiuSoF6CzxqHfBlhyvNNfFVDlW1JK5qAW9HM/edit
-- **Complete source (frontend + backend):** https://github.com/rochaksinghal01/AI-PM-Portfolio/tree/main/Agentic%20Workflows/knoxx-outbound-intelligence-n8n
-- **Lovable deployment mirror:** https://github.com/rochaksinghal01/knoxx-insight-quest
+- **Complete source (frontend + backend):** https://github.com/Mansi1892/AI-Portfolio/tree/main/projects/ai-automation/knoxx-outbound-intelligence-n8n
+- **Deployment mirror:** Not included in this repository.
 
 ## Read in this order
 

@@ -4,9 +4,11 @@
 
 I am a senior software engineer at SAP Labs working on SAP SuccessFactors, with more than eight years of experience in enterprise SaaS, Java backend engineering, distributed systems, and cloud applications. I am building toward AI engineering roles by combining that foundation with practical work in Python, FastAPI, LLM integration, agent orchestration, tool calling, and retrieval-augmented generation.
 
-[Live portfolio website](https://mansi-ai-portfolio.vercel.app) · [Website source](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
+[Live portfolio website](https://mansi1892.github.io/AI-Portfolio/) · [Download resume](./portfolio-website/assets/Mansi_Gangwar_Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/mansi-gangwar-588551136) · [Email](mailto:mansigangwar18@gmail.com)
 
-> This repository is source-first: project claims are tied to included implementations. Smart Meal AI is my original project. Other projects are included with permission from [Rochak Singhal's AI-PM-Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio) and are explicitly labeled as contributed/adapted work. See [ATTRIBUTION.md](./ATTRIBUTION.md).
+[Website source](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
+
+> This repository is source-first: project claims are tied to included implementations. Smart Meal AI is my original project. Other projects are included with permission and explicitly labeled as contributed/adapted work. See [ATTRIBUTION.md](./ATTRIBUTION.md).
 
 ## Featured project — Smart Meal AI
 
@@ -83,6 +85,31 @@ Detailed classification, dependencies, environment requirements, and run command
 
 Technologies under “AI engineering” describe learning and practical application represented in this portfolio; they do not imply professional production experience unless explicitly stated.
 
+## Professional experience
+
+### SAP Labs — Senior Software Developer
+
+**December 2019 – Present · Bangalore, India**
+
+- Reduced backend latency from approximately 1 second to under 200 milliseconds using caching and reliability patterns; also reduced deployment time by 30%.
+- Designed Kafka-based event-driven microservices handling millions of events per day across multi-tenant background workflows.
+- Built distributed backend services for complex organizational reorganization workflows and hierarchical transformations.
+- Led a team of 4 engineers, mentored 10+ engineers, and reviewed 500+ pull requests to strengthen architecture and API quality.
+
+### Huawei — Associate Developer
+
+**October 2017 – November 2019 · Bangalore, India**
+
+- Built Spring Boot REST and full-stack features supporting two agile releases per month.
+- Migrated legacy applications to Spring Boot and led backend refactoring to reduce coupling and improve API performance.
+- Defined service boundaries and reusable data flows while maintaining MySQL and Oracle data access layers.
+
+## Education and certification
+
+- **M.Tech (Hons.) in Information Security**, Birla Institute of Technology, Ranchi — 2015–2017
+- **B.Tech (Hons.) in Computer Science**, SRMS, Bareilly — 2010–2014
+- **Microsoft Certified: Azure AI Fundamentals (AI-900)** — September 2023
+
 ## Repository structure
 
 ```text
@@ -108,7 +135,7 @@ AI-Portfolio/
 
 ### Portfolio website
 
-Public URL: [mansi-ai-portfolio.vercel.app](https://mansi-ai-portfolio.vercel.app)
+Public URL: [mansi1892.github.io/AI-Portfolio](https://mansi1892.github.io/AI-Portfolio/)
 
 ```bash
 cd portfolio-website
@@ -162,7 +189,7 @@ Review [ATTRIBUTION.md](./ATTRIBUTION.md) and [docs/SECURITY_REVIEW.md](./docs/S
 
 ## Contact
 
-GitHub: [github.com/Mansi1892](https://github.com/Mansi1892)
-
-No email, LinkedIn profile, resume, certification, education, or performance claims have been added because verified source information was not provided.
-
+- Email: [mansigangwar18@gmail.com](mailto:mansigangwar18@gmail.com)
+- LinkedIn: [linkedin.com/in/mansi-gangwar-588551136](https://www.linkedin.com/in/mansi-gangwar-588551136)
+- Resume: [Mansi Gangwar — Resume](./portfolio-website/assets/Mansi_Gangwar_Resume.pdf)
+- GitHub: [github.com/Mansi1892](https://github.com/Mansi1892)

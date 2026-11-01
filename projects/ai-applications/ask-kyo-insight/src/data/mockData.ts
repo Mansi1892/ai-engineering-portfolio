@@ -2,8 +2,8 @@ import { UserContext, DataSource, QuickQuestion, QuickAction, EntryPoint, KyoOut
 
 export const currentUser: UserContext = {
   id: '1',
-  name: 'Rochak',
-  email: 'rochak@company.com',
+  name: 'Demo User',
+  email: 'demo.user@example.com',
   team: 'marketing',
   seniority: 'manager',
   permissions: ['view_all_feedback', 'export_data', 'create_reports', 'manage_alerts'],

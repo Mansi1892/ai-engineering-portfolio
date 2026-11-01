@@ -22,4 +22,4 @@ Paste a call transcript → AI evaluates across multiple quality dimensions (emp
 Manual QA of support calls is slow and inconsistent. This standardises evaluation at scale — same rubric, every call, instant feedback.
 
 ---
-**Built by Rochak Singhal** — [LinkedIn](https://linkedin.com/in/rochak-singhal) · [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

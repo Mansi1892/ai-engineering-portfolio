@@ -21,7 +21,7 @@ The deployed production bundle currently contains:
 VITE_SUPABASE_URL=https://sbbqtvhyfdxywkanwldb.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=
 VITE_DEMO_MODE=true
-VITE_SAFE_TEST_EMAIL=rochak.singhal@gmail.com
+VITE_SAFE_TEST_EMAIL=safe-test@example.com
 ```
 
 Because the publishable key is empty, the app correctly enters fixture mode, displays “no backend key configured,” cannot establish a Supabase session and cannot invoke live Edge Functions.
@@ -34,7 +34,7 @@ Configure the existing project's production environment with:
 VITE_SUPABASE_URL=https://sbbqtvhyfdxywkanwldb.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=<existing Supabase publishable browser key>
 VITE_DEMO_MODE=true
-VITE_SAFE_TEST_EMAIL=rochak.singhal@gmail.com
+VITE_SAFE_TEST_EMAIL=safe-test@example.com
 ```
 
 The publishable key must come from the existing Supabase project's API Keys page. It is a browser key, not a secret/service-role key. Trigger a fresh production deployment after setting it.
@@ -81,4 +81,3 @@ After republishing, report:
 - Confirmation that the Supabase URL contains only project ref `sbbqtvhyfdxywkanwldb`.
 - Confirmation that no service-role/provider secret exists in the browser bundle.
 - Files changed and tests/build run.
-

@@ -20,4 +20,4 @@
 - n8n · Stock market API · AI for sentiment and brief generation
 
 ---
-**Built by Rochak Singhal** — [Portfolio](https://github.com/rochaksinghal01/AI-PM-Portfolio)
+**Ownership:** Contributed/adapted project included with permission; not presented as Mansi Gangwar's original work.

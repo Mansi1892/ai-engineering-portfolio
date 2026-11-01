@@ -21,7 +21,7 @@ Use exactly these browser environment variables:
 VITE_SUPABASE_URL=https://sbbqtvhyfdxywkanwldb.supabase.co
 VITE_SUPABASE_PUBLISHABLE_KEY=<the existing active publishable key>
 VITE_DEMO_MODE=true
-VITE_SAFE_TEST_EMAIL=rochak.singhal@gmail.com
+VITE_SAFE_TEST_EMAIL=safe-test@example.com
 ```
 
 The publishable key is the only backend key allowed in browser code. Never request, copy, log or expose a service-role key, database password, n8n secret, Gmail credential, Firecrawl key, Apollo key, OpenAI key, Gemini key, tracking signing secret or outreach-event secret. Never put secrets in React code, local storage, screenshots, console logs or the public repository.

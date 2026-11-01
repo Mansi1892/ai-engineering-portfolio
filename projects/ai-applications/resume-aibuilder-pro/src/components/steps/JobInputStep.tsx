@@ -16,7 +16,7 @@ export const JobInputStep = () => {
     try {
       setStep("loading");
 
-      const res = await fetch("https://rochak.app.n8n.cloud/webhook/job-application", {
+      const res = await fetch("https://your-n8n.example.com/webhook/job-application", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
