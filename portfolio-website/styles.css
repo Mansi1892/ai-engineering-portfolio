@@ -786,17 +786,46 @@ h2 em {
   justify-content: space-between;
 }
 
-.project-toolbar-note {
-  max-width: 460px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.5;
-  text-align: right;
+.ai-capability-band {
+  display: flex;
+  max-width: 610px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.38);
 }
 
-.project-toolbar-note strong {
+.ai-capability-band > span {
+  padding: 5px 8px;
+  border-radius: 100px;
+  background: rgba(200, 255, 98, 0.18);
   color: var(--ink);
+  font: 500 8px var(--mono);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ai-capability-band > .ai-capability-title {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 7px;
+  background: transparent;
+  font-weight: 700;
+}
+
+.ai-capability-title::before {
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #6a930f;
+  box-shadow: 0 0 0 4px rgba(106, 147, 15, 0.12);
+  content: "";
 }
 
 .filter-group {
@@ -826,30 +855,6 @@ h2 em {
   border-color: var(--ink);
   background: var(--ink);
   color: var(--white);
-}
-
-.filter.ai-filter:not(.active) {
-  border-color: #6a930f;
-  background: rgba(200, 255, 98, 0.24);
-  color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(106, 147, 15, 0.1);
-}
-
-.filter.ai-filter:not(.active)::before {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 2px;
-  border-radius: 50%;
-  background: #6a930f;
-  box-shadow: 0 0 0 4px rgba(106, 147, 15, 0.12);
-  content: "";
-}
-
-.filter.ai-filter:hover {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--acid);
 }
 
 .project-grid {
@@ -1430,9 +1435,11 @@ footer > a:last-child {
     gap: 16px;
   }
 
-  .project-toolbar-note {
-    max-width: 560px;
-    text-align: left;
+  .ai-capability-band {
+    width: 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    border-radius: 18px;
   }
 
   .project-grid {
