@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { projects, sister, type Project } from '../../data/site';
+import { u } from '../../lib/url';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props as { p: Project };
+const idx = projects.findIndex((x) => x.slug === p.slug);
+const next = projects[(idx + 1) % projects.length];
+// CARPL: the live link points at the STAGING site. Client OK is pending; confirm
+// with CARPL before launch (see README pre-launch checklist).
+const isStaging = p.url.includes('staging.');
+---
+<Base title={`${p.name} case study`} description={`${p.hook} ${p.summary}`} image={`/images/work/${p.slug}.webp`}>
+  <section class="relative overflow-hidden border-b border-line">
+    <div class="grid-bg pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"></div>
+    <div class="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full blur-3xl opacity-40" style={`background:${p.accent}`}></div>
+    <div class="container-x relative py-14 sm:py-20">
+      <a href={u('/work/')} class="inline-flex items-center gap-1.5 text-sm text-mute hover:text-white">← All work</a>
+      <p class="eyebrow mt-8">Case study · {p.industry}</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-6xl">{p.name}</h1>
+      <p class="lead mt-5 max-w-3xl text-white/90">{p.hook}</p>
+      <dl class="mt-10 grid max-w-4xl grid-cols-2 gap-6 border-t border-line pt-6 text-sm md:grid-cols-4">
+        <div><dt class="label">Client</dt><dd class="text-white">{p.client}</dd></div>
+        <div><dt class="label">Country</dt><dd class="text-white">{p.flag} {p.country}</dd></div>
+        <div><dt class="label">Platform</dt><dd class="text-white">{p.platform}</dd></div>
+        <div><dt class="label">Live site</dt><dd><a href={p.url} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-lime hover:underline">{p.urlLabel}<Icon name="ext" class="h-3.5 w-3.5" /></a>{isStaging && <span class="block text-xs text-mute">Staging preview</span>}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="container-x py-14 sm:py-20">
+    <div class="grid items-end gap-6 lg:grid-cols-12">
+      <figure class="overflow-hidden rounded-2xl border border-line bg-char lg:col-span-9" data-reveal>
+        <div class="flex items-center gap-1.5 border-b border-line px-4 py-2.5"><span class="h-2.5 w-2.5 rounded-full bg-line"></span><span class="h-2.5 w-2.5 rounded-full bg-line"></span><span class="h-2.5 w-2.5 rounded-full bg-line"></span><span class="ml-3 font-mono text-[11px] text-mute">{p.urlLabel}</span></div>
+        <img src={u(`/images/work/${p.slug}.webp`)} srcset={`${u(`/images/work/${p.slug}-800.webp`)} 800w, ${u(`/images/work/${p.slug}.webp`)} 1440w`} sizes="(min-width:1024px) 75vw, 100vw" width="1440" height="900" alt={`${p.name} homepage, desktop`} fetchpriority="high" class="w-full" />
+      </figure>
+      <figure class="mx-auto w-48 overflow-hidden rounded-[26px] border-[6px] border-char bg-char shadow-2xl lg:col-span-3 lg:w-full lg:max-w-[240px]" data-reveal>
+        <img src={u(`/images/work/${p.slug}-mobile.webp`)} width="390" height="844" alt={`${p.name} homepage, mobile`} loading="lazy" class="w-full" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="container-x grid gap-12 pb-16 lg:grid-cols-12">
+    <div class="space-y-12 lg:col-span-8">
+      <div data-reveal><p class="eyebrow mb-3">Overview</p><p class="text-lg leading-relaxed text-white/90">{p.summary}</p></div>
+      <div data-reveal><p class="eyebrow mb-3">The challenge</p><p class="leading-relaxed text-soft">{p.challenge}</p></div>
+      <div data-reveal><p class="eyebrow mb-3">Our approach</p>
+        <ol class="space-y-4">{p.approach.map((a, i) => <li class="flex gap-4"><span class="font-mono text-sm text-lime">0{i + 1}</span><span class="leading-relaxed text-soft">{a}</span></li>)}</ol>
+      </div>
+      <div data-reveal><p class="eyebrow mb-3">Result</p><p class="leading-relaxed text-white/90">{p.result}</p></div>
+    </div>
+    <aside class="space-y-5 lg:col-span-4">
+      <div class="card p-6" data-reveal>
+        <p class="label">What we shipped</p>
+        <ul class="mt-3 space-y-2.5 text-sm">{p.shipped.map((s) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lime" />{s}</li>)}</ul>
+      </div>
+      <div class="card p-6" data-reveal>
+        <p class="label">Stack</p>
+        <div class="mt-3 flex flex-wrap gap-2">{p.stack.map((s) => <span class="chip">{s}</span>)}</div>
+      </div>
+      {p.note && <div class="rounded-2xl border border-dashed border-lime/50 bg-lime/[0.04] p-6 text-sm" data-reveal><p class="text-white">{p.note}</p><a href={sister.url} target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-1 text-lime">eraofmarketing.com <Icon name="ext" class="h-3.5 w-3.5" /></a></div>}
+      <a href={u(`/contact/?service=${encodeURIComponent('Something else')}&message=${encodeURIComponent(`I'd like something like the ${p.name} project.`)}`)} class="btn-primary w-full">Want something like this? <Icon name="arrow" class="h-4 w-4" /></a>
+    </aside>
+  </section>
+
+  <section class="border-t border-line py-16">
+    <div class="container-x">
+      <h2 class="eyebrow mb-6">Next case study</h2>
+      <div class="max-w-2xl"><ProjectCard p={next} /></div>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Icon from '../components/Icon.astro';
+const promises = [
+  ['Fixed quote before we start', 'Scope, timeline and price in writing. Changes are agreed before they are billed.'],
+  ['Weekly demos on a staging link', 'See progress every week on real devices; no big reveal at the end.'],
+  ['You own everything', 'Domain, code, hosting accounts and content are yours. No lock-in.'],
+  ['Launch checklist, every time', 'SSL, security headers, backups, analytics, SEO meta, redirects and speed checks.'],
+  ['One point of contact', 'A founder stays on your project from first call to launch and beyond.'],
+  ['Support after launch', '30 days of free fixes, then an optional care plan.'],
+];
+const youProvide = ['Logo and brand assets (or we create them)', 'Content and photos (or we write and source them)', 'Access to domain / hosting (or we set it up)', 'One decision-maker for quick feedback'];
+---
+<Base title="Our process" description="How Era of Tech delivers: Discover, Design, Build, Secure & launch, Grow. Fixed quotes, weekly demos and you own your code.">
+  <PageHero eyebrow="Process" title="Five steps. <span class='text-lime'>No surprises.</span>" lead="A clear, senior-led process from a free discovery call to a secure launch, and growth after that." />
+  <section class="container-x py-16 sm:py-24"><ProcessSteps /></section>
+  <section class="border-t border-line bg-coal/40 py-16 sm:py-24">
+    <div class="container-x">
+      <SectionHead eyebrow="Our promises" title="How working with us feels." />
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {promises.map(([t, d]) => <div class="card p-6" data-reveal><Icon name="check" class="h-5 w-5 text-lime" /><h3 class="mt-4 text-lg font-semibold">{t}</h3><p class="mt-2 text-sm leading-relaxed text-soft">{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="container-x grid gap-10 py-16 sm:py-24 lg:grid-cols-2">
+    <SectionHead eyebrow="What we need from you" title="Less than you think." lead="We can take care of most of this for you; just tell us on the first call." />
+    <ul class="space-y-3 self-center">{youProvide.map((x) => <li class="card flex gap-3 p-4 text-sm" data-reveal><Icon name="check" class="h-5 w-5 shrink-0 text-lime" />{x}</li>)}</ul>
+  </section>
+  <FinalCta />
+</Base>

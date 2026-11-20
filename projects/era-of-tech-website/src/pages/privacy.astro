@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, brand } from '../data/site';
+---
+<Base title="Privacy policy" description="How Era of Tech handles the information you share through this website.">
+  <section class="container-x max-w-3xl py-16 sm:py-24">
+    <p class="eyebrow mb-4">Legal</p>
+    <h1 class="text-4xl font-semibold">Privacy policy</h1>
+    <!-- PLACEHOLDER: have this reviewed before launch (India DPDP Act, UK GDPR, UAE PDPL). -->
+    <div class="mt-8 space-y-5 leading-relaxed text-soft">
+      <p>{brand.name} collects only the details you choose to send us through our contact form, email or WhatsApp (such as your name, email, phone number and project details) so we can reply to your enquiry and prepare a proposal.</p>
+      <p>We do not sell your data. Form submissions may be processed by our form provider and stored in our email inbox. If analytics are enabled, they are used in aggregate to improve the site.</p>
+      <p>To access or delete your information, email <a class="text-lime" href={`mailto:${contact.email}`}>{contact.email}</a>.</p>
+    </div>
+  </section>
+</Base>

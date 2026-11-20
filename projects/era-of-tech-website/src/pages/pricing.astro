@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingCards from '../components/PricingCards.astro';
+import SectionHead from '../components/SectionHead.astro';
+import BuildGrow from '../components/BuildGrow.astro';
+import FaqList from '../components/FaqList.astro';
+import Icon from '../components/Icon.astro';
+import { estimator, contact } from '../data/site';
+import { u } from '../lib/url';
+---
+<Base title="Pricing & cost estimator" description="Starting prices for websites, Shopify stores, custom platforms and AI automation in INR and USD, plus a free project cost estimator.">
+  <PageHero eyebrow="Pricing" title="Clear starting prices. <span class='text-lime'>Fixed quotes.</span>" lead="Indicative ‘from’ prices in INR and USD. Every project gets a fixed written quote after a free 30-minute call, with no surprise invoices." />
+  <section class="container-x py-16 sm:py-24"><PricingCards /></section>
+
+  <section id="estimator" class="scroll-mt-20 border-t border-line bg-coal/40 py-16 sm:py-24">
+    <div class="container-x grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <SectionHead eyebrow="Cost estimator" title="Ballpark your project in 30 seconds." lead="Rough guide only. Your fixed quote may be lower or higher once we understand the details." />
+      </div>
+      <form id="estimator-form" class="card grid gap-6 p-6 sm:p-8 lg:col-span-7" data-cfg={JSON.stringify(estimator)} data-contact={u('/contact/')} data-wa={contact.whatsappNumber}>
+        <fieldset>
+          <legend class="label">1 · What are we building?</legend>
+          <div class="mt-2 grid gap-2 sm:grid-cols-2">
+            {estimator.types.map((t, i) => (
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-line p-3 text-sm text-white has-[:checked]:border-lime has-[:checked]:bg-lime/[0.06]">
+                <input type="radio" name="type" value={t.id} checked={i === 0} class="accent-[#D7E935]" />{t.label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <div data-pages-wrap>
+          <label class="label" for="pages">2 · Approx. pages / templates: <span class="text-white" data-pages-out>6</span></label>
+          <input id="pages" name="pages" type="range" min="1" max="40" value="6" class="w-full accent-[#D7E935]" />
+        </div>
+        <fieldset>
+          <legend class="label">3 · Add-ons</legend>
+          <div class="mt-2 grid gap-2 sm:grid-cols-2">
+            {estimator.addons.map((a) => (
+              <label class="flex cursor-pointer items-center gap-3 rounded-xl border border-line p-3 text-sm text-white has-[:checked]:border-lime has-[:checked]:bg-lime/[0.06]">
+                <input type="checkbox" name="addon" value={a.id} class="accent-[#D7E935]" />{a.label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <label class="flex cursor-pointer items-center gap-3 text-sm text-white"><input type="checkbox" name="rush" class="accent-[#D7E935]" />I need it fast (rush timeline)</label>
+        <div class="rounded-2xl border border-lime/40 bg-ink p-6" aria-live="polite">
+          <div class="flex items-center justify-between gap-4">
+            <p class="label !mb-0">Estimated range</p>
+            <div class="flex rounded-full border border-line p-1 text-xs" role="group" aria-label="Currency">
+              <button type="button" data-cur="INR" class="rounded-full bg-lime px-3 py-1 font-semibold text-black">INR</button>
+              <button type="button" data-cur="USD" class="rounded-full px-3 py-1 text-soft">USD</button>
+            </div>
+          </div>
+          <p class="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl" data-out>—</p>
+          <p class="mt-1 text-xs text-mute">Excl. taxes. Hosting/care plan billed separately.</p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a href="#" class="btn-primary" data-send>Get my fixed quote <Icon name="arrow" class="h-4 w-4" /></a>
+            <a href="#" target="_blank" rel="noopener" class="btn-ghost" data-send-wa>Send on WhatsApp</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <BuildGrow />
+  <section class="container-x pb-24"><FaqList limit={4} /></section>
+</Base>
+
+<script>
+  const f = document.getElementById('estimator-form') as HTMLFormElement;
+  const cfg = JSON.parse(f.dataset.cfg!);
+  let cur: 'INR' | 'USD' = 'INR';
+  const out = f.querySelector<HTMLElement>('[data-out]')!;
+  const pagesOut = f.querySelector<HTMLElement>('[data-pages-out]')!;
+  const pagesWrap = f.querySelector<HTMLElement>('[data-pages-wrap]')!;
+  const fmt = (n: number) => cur === 'INR'
+    ? '₹' + (n >= 100000 ? (n / 100000).toFixed(1).replace(/\.0$/, '') + 'L' : Math.round(n / 1000) + 'k')
+    : '$' + (Math.round(n / cfg.fxRate / 50) * 50).toLocaleString('en-US');
+  function calc() {
+    const fd = new FormData(f);
+    const t = cfg.types.find((x: any) => x.id === fd.get('type'));
+    const pages = Number(fd.get('pages'));
+    pagesOut.textContent = String(pages);
+    pagesWrap.style.display = t.perPage ? '' : 'none';
+    let total = t.base + Math.max(0, pages - t.includedPages) * t.perPage;
+    const addons = fd.getAll('addon').map((id) => cfg.addons.find((a: any) => a.id === id));
+    for (const a of addons) total += a.price;
+    if (fd.get('rush')) total *= cfg.rushMultiplier;
+    const lo = total, hi = total * (1 + cfg.rangeSpread);
+    const range = `${fmt(lo)} – ${fmt(hi)}`;
+    out.textContent = range;
+    const msg = `Estimator: ${t.label}${t.perPage ? `, ~${pages} pages` : ''}${addons.length ? ', add-ons: ' + addons.map((a: any) => a.label).join(', ') : ''}${fd.get('rush') ? ', rush' : ''}. Estimated ${range}.`;
+    const svc = { website: 'Website / landing page', store: 'Shopify / e-commerce', app: 'Custom platform / web app', ai: 'AI chatbot / automation' }[t.id as string];
+    f.querySelector<HTMLAnchorElement>('[data-send]')!.href = `${f.dataset.contact}?service=${encodeURIComponent(svc!)}&message=${encodeURIComponent(msg)}`;
+    f.querySelector<HTMLAnchorElement>('[data-send-wa]')!.href = `https://wa.me/${f.dataset.wa}?text=${encodeURIComponent('Hi Era of Tech! ' + msg)}`;
+  }
+  f.addEventListener('input', calc);
+  f.querySelectorAll<HTMLButtonElement>('[data-cur]').forEach((b) => b.addEventListener('click', () => {
+    cur = b.dataset.cur as 'INR' | 'USD';
+    f.querySelectorAll<HTMLButtonElement>('[data-cur]').forEach((x) => { const on = x === b; x.classList.toggle('bg-lime', on); x.classList.toggle('text-black', on); x.classList.toggle('font-semibold', on); x.classList.toggle('text-soft', !on); });
+    calc();
+  }));
+  calc();
+</script>

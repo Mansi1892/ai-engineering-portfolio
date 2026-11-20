@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import StatsBand from '../components/StatsBand.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import WhyUs from '../components/WhyUs.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+import PricingCards from '../components/PricingCards.astro';
+import BuildGrow from '../components/BuildGrow.astro';
+import FaqList from '../components/FaqList.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { projects, credentials, aiProjects, aiProof, sister } from '../data/site';
+import { u, waLink } from '../lib/url';
+const featured = projects.filter((p) => p.featured);
+const more = projects.filter((p) => !p.featured);
+const aiPicks = aiProjects.filter((a) => ['AI Customer Support Chatbot', 'Lead Scoring Engine', 'Smart Meal AI'].includes(a.name));
+---
+<Base>
+  <!-- 1. HERO -->
+  <section class="relative overflow-hidden">
+    <div class="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"></div>
+    <div class="pointer-events-none absolute left-1/2 top-[-260px] h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-lime/[0.12] blur-3xl"></div>
+    <div class="container-x relative grid items-center gap-14 pb-16 pt-14 sm:pt-20 lg:grid-cols-12 lg:pb-24">
+      <div class="lg:col-span-6">
+        <p class="chip !border-lime/40 !text-lime"><span class="pulse-dot mr-2 inline-block h-1.5 w-1.5 rounded-full bg-lime"></span>Design · Code · Security · Hosting · AI</p>
+        <h1 class="mt-6 text-[2.5rem] font-semibold leading-[1.04] sm:text-6xl lg:text-[4.1rem]">Websites that <span class="text-lime">win you customers.</span></h1>
+        <p class="lead mt-6 max-w-xl">Built end-to-end by engineers from SAP, Huawei and Lenskart: design, development, security, hosting and the AI that follows up every lead. Ads, SEO and branding come from our sister agency {sister.name}.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={u('/contact/')} class="btn-primary" data-track="hero-quote">Get a free quote in 24h <Icon name="arrow" class="h-4 w-4" /></a>
+          <a href={waLink()} target="_blank" rel="noopener" class="btn-ghost" data-track="hero-whatsapp"><WhatsAppIcon class="h-4 w-4" />Chat on WhatsApp</a>
+        </div>
+        <a href="#work" class="mt-6 inline-flex items-center gap-2 text-sm text-mute hover:text-white">See our work ↓</a>
+        <p class="mt-8 font-mono text-[11px] uppercase tracking-wider text-mute">Clients across 🇮🇳 India · 🇦🇪 UAE · 🇬🇧 UK</p>
+      </div>
+      <div class="relative lg:col-span-6" aria-hidden="true">
+        <div class="relative mx-auto aspect-[16/12] w-full max-w-[620px]">
+          <div class="absolute right-0 top-0 w-[78%] overflow-hidden rounded-xl border border-line bg-char shadow-2xl shadow-black/60 float-y" style="animation-delay:-2s">
+            <div class="flex gap-1.5 border-b border-line px-3 py-2"><span class="h-2 w-2 rounded-full bg-line"></span><span class="h-2 w-2 rounded-full bg-line"></span><span class="h-2 w-2 rounded-full bg-line"></span></div>
+            <img src={u('/images/work/carpl-800.webp')} width="800" height="500" alt="" fetchpriority="high" class="w-full" />
+          </div>
+          <div class="absolute bottom-[6%] left-0 w-[70%] overflow-hidden rounded-xl border border-line bg-char shadow-2xl shadow-black/70 float-y">
+            <div class="flex gap-1.5 border-b border-line px-3 py-2"><span class="h-2 w-2 rounded-full bg-line"></span><span class="h-2 w-2 rounded-full bg-line"></span><span class="h-2 w-2 rounded-full bg-line"></span></div>
+            <img src={u('/images/work/camelia-800.webp')} width="800" height="500" alt="" class="w-full" />
+          </div>
+          <div class="absolute bottom-0 right-[4%] w-[24%] overflow-hidden rounded-[18px] border-4 border-char bg-char shadow-2xl shadow-black/70 float-y" style="animation-delay:-4s">
+            <img src={u('/images/work/silver-storey-mobile.webp')} width="390" height="844" alt="" class="w-full" />
+          </div>
+          <div class="absolute left-[4%] top-[8%] rounded-xl border border-line bg-ink/90 px-4 py-3 font-mono text-[11px] leading-5 text-soft backdrop-blur">
+            <span class="text-lime">✓</span> SSL + security headers<br /><span class="text-lime">✓</span> WhatsApp + booking<br /><span class="text-lime">✓</span> AI lead follow-up
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. TRUST BAR -->
+  <section aria-label="Clients and team background" class="border-y border-line py-6">
+    <div class="container-x flex flex-col gap-5 lg:flex-row lg:items-center">
+      <p class="shrink-0 font-mono text-[11px] uppercase tracking-wider text-mute">Trusted by</p>
+      <div class="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <div class="marquee flex w-max gap-12 pr-12">
+          {[...projects, ...projects].map((p) => <span class="whitespace-nowrap font-display text-xl font-semibold text-soft">{p.name}</span>)}
+        </div>
+      </div>
+    </div>
+    <div class="container-x mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-mute">
+      <span class="font-mono text-[11px] uppercase tracking-wider">Team from</span>
+      {credentials.map((c) => <span class="text-soft">{c}</span>)}
+    </div>
+  </section>
+
+  <!-- 2b. STATS (PLACEHOLDER values from src/data/site.ts) -->
+  <StatsBand />
+
+  <!-- 3. FEATURED WORK -->
+  <section id="work" class="container-x scroll-mt-20 py-20 sm:py-28">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <SectionHead eyebrow="Selected work" title="Real businesses. <span class='text-lime'>Live sites.</span>" lead="From a radiology-AI platform to a D2C skincare launch: we pick the right stack for each business and build it to convert." />
+      <a href={u('/work/')} class="btn-ghost shrink-0">All case studies <Icon name="arrow" class="h-4 w-4" /></a>
+    </div>
+    <div class="mt-12 grid gap-x-6 gap-y-14 md:grid-cols-2">
+      {featured.map((p) => <ProjectCard p={p} />)}
+    </div>
+    <div class="mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+      {more.map((p) => <ProjectCard p={p} size="sm" />)}
+      <a href={u('/contact/')} class="card group flex min-h-64 flex-col justify-end p-7 transition hover:border-lime" data-reveal>
+        <p class="eyebrow">Your project</p>
+        <h3 class="mt-3 text-2xl font-semibold">Could be next.</h3>
+        <span class="mt-4 inline-flex items-center gap-1.5 text-sm text-lime">Start a project <Icon name="arrow" class="h-4 w-4 transition group-hover:translate-x-1" /></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 4. SERVICES -->
+  <section class="border-t border-line bg-coal/40 py-20 sm:py-28">
+    <div class="container-x">
+      <SectionHead eyebrow="Services" title="One senior team, end to end." lead="Design, code, security and hosting under one roof, plus AI and marketing when you're ready to grow." />
+      <div class="mt-12"><ServicesGrid /></div>
+    </div>
+  </section>
+
+  <!-- 5. AI BAND -->
+  <section class="relative overflow-hidden py-20 sm:py-28">
+    <div class="pointer-events-none absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-cobalt/10 blur-3xl"></div>
+    <div class="container-x relative">
+      <SectionHead eyebrow="AI Lab" title="Your website shouldn't just look good. <span class='text-lime'>It should answer, qualify and follow up 24/7.</span>" lead="We add AI chatbots, WhatsApp bots, lead scoring and workflow automation, built by people who have shipped AI products at scale." />
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {aiPicks.map((a) => (
+          <div class="card flex flex-col p-7" data-reveal>
+            <p class="chip w-fit !text-lime">{a.tag}</p>
+            <h3 class="mt-4 text-xl font-semibold">{a.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-soft">{a.desc}</p>
+            <div class="mt-auto flex flex-wrap gap-4 pt-6 text-sm">{a.links.map((l) => <a href={l.url} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-lime hover:underline">{l.label}<Icon name="ext" class="h-3.5 w-3.5" /></a>)}</div>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4" data-reveal>
+        {aiProof.map((x) => <div class="bg-coal p-6"><p class="font-display text-2xl font-semibold text-white">{x.value}</p><p class="mt-1 text-xs leading-snug text-mute">{x.label}</p></div>)}
+      </div>
+      <p class="mt-3 font-mono text-[11px] uppercase tracking-wider text-mute">Team track record at previous companies</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={u('/ai-lab/')} class="btn-primary">Try a live demo <Icon name="arrow" class="h-4 w-4" /></a>
+        <a href={u('/contact/?service=AI%20chatbot%20%2F%20automation')} class="btn-ghost">Add AI to my site</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PROCESS -->
+  <section class="border-t border-line py-20 sm:py-28">
+    <div class="container-x">
+      <SectionHead eyebrow="Process" title="From first call to live site in weeks." lead="Fixed quote before we start. Weekly demos. You own your code, domain and data." />
+      <div class="mt-12"><ProcessSteps /></div>
+    </div>
+  </section>
+
+  <!-- 7. WHY US -->
+  <section class="border-t border-line bg-coal/40 py-20 sm:py-28">
+    <div class="container-x grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4"><SectionHead eyebrow="Why Era of Tech" title="Built like a product company. Priced like a studio." /></div>
+      <div class="lg:col-span-8"><WhyUs /></div>
+    </div>
+  </section>
+
+  <!-- 8. TEAM -->
+  <section class="py-20 sm:py-28">
+    <div class="container-x">
+      <SectionHead eyebrow="Team" title="The people who build your project." lead="No hand-offs to juniors: the founders stay on every project." />
+      <div class="mt-12"><TeamGrid /></div>
+    </div>
+  </section>
+
+  <!-- 9. TESTIMONIALS (hidden until showTestimonials = true) -->
+  <Testimonials />
+
+  <!-- 10. PRICING TEASER -->
+  <section class="border-t border-line py-20 sm:py-28">
+    <div class="container-x">
+      <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <SectionHead eyebrow="Pricing" title="Clear starting prices. Fixed quotes." lead="Ballpark your project in 30 seconds with our estimator." />
+        <a href={u('/pricing/#estimator')} class="btn-primary shrink-0">Estimate my project <Icon name="arrow" class="h-4 w-4" /></a>
+      </div>
+      <div class="mt-12"><PricingCards /></div>
+    </div>
+  </section>
+
+  <!-- BUILD + GROW -->
+  <BuildGrow />
+
+  <!-- 11. FAQ -->
+  <section class="border-t border-line py-20 sm:py-28">
+    <div class="container-x grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <SectionHead eyebrow="FAQ" title="Questions, answered." />
+        <a href={u('/faq/')} class="mt-6 inline-flex items-center gap-1.5 text-sm text-lime">All FAQs <Icon name="arrow" class="h-4 w-4" /></a>
+      </div>
+      <div class="lg:col-span-8"><FaqList limit={6} /></div>
+    </div>
+  </section>
+
+  <!-- 12. FINAL CTA + LEAD FORM -->
+  <FinalCta />
+</Base>

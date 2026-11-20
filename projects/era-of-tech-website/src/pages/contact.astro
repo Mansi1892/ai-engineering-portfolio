@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import LeadForm from '../components/LeadForm.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import Icon from '../components/Icon.astro';
+import { contact, sister } from '../data/site';
+import { waLink, bookingHref } from '../lib/url';
+---
+<Base title="Contact: start a project" description="Tell Era of Tech what you want to build and get a plan and quote within 24 hours. WhatsApp +91 98307 50543 or rochak.singhal@gmail.com.">
+  <section class="relative overflow-hidden">
+    <div class="grid-bg pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]"></div>
+    <div class="container-x relative grid gap-12 py-16 sm:py-24 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <p class="eyebrow mb-4">Contact</p>
+        <h1 class="text-4xl font-semibold leading-[1.08] sm:text-5xl">Let's build something that <span class="text-lime">sells.</span></h1>
+        <p class="lead mt-5">Share a few details and we'll send a plan and a fixed quote within 24 hours. Prefer to talk? WhatsApp or book a call.</p>
+        <div class="mt-8 grid gap-3">
+          <a href={waLink()} target="_blank" rel="noopener" class="card flex items-center gap-4 p-4 transition hover:border-lime"><span class="grid h-11 w-11 place-items-center rounded-full bg-[#25D366] text-white"><WhatsAppIcon /></span><span><span class="block font-display text-white">WhatsApp</span><span class="text-sm text-mute">{contact.whatsappDisplay}</span></span></a>
+          <a href={`mailto:${contact.email}`} class="card flex items-center gap-4 p-4 transition hover:border-lime"><span class="grid h-11 w-11 place-items-center rounded-full bg-char text-lime"><Icon name="mail" /></span><span><span class="block font-display text-white">Email</span><span class="text-sm text-mute">{contact.email}</span></span></a>
+          <a href={bookingHref()} target="_blank" rel="noopener" class="card flex items-center gap-4 p-4 transition hover:border-lime"><span class="grid h-11 w-11 place-items-center rounded-full bg-lime text-black"><Icon name="cal" /></span><span><span class="block font-display text-white">Book a 20-min call</span><span class="text-sm text-mute">Free, no obligation</span></span></a>
+        </div>
+        <p class="mt-8 text-sm text-mute">Need marketing too? Our sister agency <a href={sister.url} target="_blank" rel="noopener" class="text-lime hover:underline">{sister.name}</a> handles ads, SEO and branding. Pick “Build + Grow” in the form.</p>
+        <p class="mt-4 font-mono text-[11px] uppercase tracking-wider text-mute">Serving {contact.locations.join(' · ')} · Mon–Sat, IST</p>
+      </div>
+      <div class="lg:col-span-7"><LeadForm id="contact-form" /></div>
+    </div>
+  </section>
+</Base>

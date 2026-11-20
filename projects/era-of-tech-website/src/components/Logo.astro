@@ -1,0 +1,14 @@
+---
+interface Props { class?: string; size?: number }
+const { class: cls = '', size = 28 } = Astro.props;
+---
+<span class={`inline-flex items-center gap-2.5 ${cls}`}>
+  <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
+    <rect width="32" height="32" rx="7" fill="#D7E935" />
+    <rect x="8" y="8" width="16" height="3.6" rx="1.2" fill="#0A0A0A" />
+    <rect x="8" y="14.2" width="11" height="3.6" rx="1.2" fill="#0A0A0A" />
+    <rect x="8" y="20.4" width="16" height="3.6" rx="1.2" fill="#0A0A0A" />
+    <rect x="21.5" y="14.2" width="2.5" height="3.6" rx="1" fill="#0A0A0A" opacity=".35" />
+  </svg>
+  <span class="font-display text-[1.05rem] font-semibold tracking-tight text-white">era<span class="mx-[0.2em] text-mute font-normal">of</span>tech</span>
+</span>

@@ -1,0 +1,19 @@
+---
+import { testimonials, showTestimonials } from '../data/site';
+// Hidden unless showTestimonials === true in src/data/site.ts.
+// Current entries are SAMPLE placeholders; replace with real, approved quotes first.
+---
+{showTestimonials && (
+  <section class="container-x py-20 sm:py-28">
+    <p class="eyebrow mb-4">Clients</p>
+    <h2 class="h-section">What clients say</h2>
+    <div class="mt-12 grid gap-5 md:grid-cols-3">
+      {testimonials.map((t) => (
+        <figure class="card p-7" data-reveal>
+          <blockquote class="text-white leading-relaxed">“{t.quote}”</blockquote>
+          <figcaption class="mt-6 text-sm text-mute"><span class="text-white">{t.name}</span>, {t.role}, {t.company} · {t.country}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+)}
