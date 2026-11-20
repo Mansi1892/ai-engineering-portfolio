@@ -1,0 +1,41 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav } from '../data/site';
+import { u, bookingHref } from '../lib/url';
+const path = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
+const booking = bookingHref();
+---
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href={u("/")} class="shrink-0"><Logo /><span class="sr-only"> home</span></a>
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {nav.map((n) => (
+          <li><a href={u(n.href)} class={`rounded-full px-3 py-2 text-sm transition hover:text-white ${path.startsWith(n.href) ? 'text-white' : 'text-mute'}`} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href={u('/contact/')} class="hidden text-sm text-mute transition hover:text-white sm:inline-block md:px-2">Contact</a>
+      <a href={booking} target={booking.startsWith('http') ? '_blank' : undefined} rel="noopener" class="btn-primary !px-4 !py-2.5" data-track="book-call-nav"><Icon name="cal" class="h-4 w-4" />Book a call</a>
+      <button id="menu-btn" class="grid h-10 w-10 place-items-center rounded-full border border-line text-white lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><Icon name="menu" /></button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden border-t border-line bg-ink/95 backdrop-blur lg:hidden">
+    <ul class="container-x grid gap-1 py-4">
+      {nav.map((n) => <li><a href={u(n.href)} class="block rounded-xl px-3 py-3 font-display text-lg text-white hover:bg-char">{n.label}</a></li>)}
+      <li><a href={u('/contact/')} class="block rounded-xl px-3 py-3 font-display text-lg text-lime hover:bg-char">Contact →</a></li>
+    </ul>
+  </div>
+</header>
+<script>
+  const h = document.getElementById('site-header')!;
+  const onScroll = () => h.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  const b = document.getElementById('menu-btn')!, m = document.getElementById('mobile-menu')!;
+  b.addEventListener('click', () => { const open = m.classList.toggle('hidden') === false; b.setAttribute('aria-expanded', String(open)); });
+</script>
+<style>
+  #site-header.scrolled { background: rgb(10 10 10 / 0.82); backdrop-filter: blur(14px); border-color: var(--color-line); }
+</style>

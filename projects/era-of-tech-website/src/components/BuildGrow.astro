@@ -1,0 +1,32 @@
+---
+import { sister } from '../data/site';
+import Icon from './Icon.astro';
+import { u } from '../lib/url';
+---
+<section id="build-grow" class="container-x py-12 sm:py-16">
+  <div class="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-char to-ink p-8 sm:p-12" data-reveal>
+    <div class="grid-bg pointer-events-none absolute inset-0 opacity-60"></div>
+    <div class="relative grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="eyebrow mb-4">Build + Grow</p>
+        <h2 class="h-section">We build it.<br /><span class="text-lime">{sister.name}</span> fills it with customers.</h2>
+        <p class="lead mt-5">Your website, store or app from Era of Tech, plus ads, SEO, content and branding from our sister agency {sister.name}. One plan, one team, one point of contact.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={u('/contact/?service=Build%20%2B%20Grow%20(site%20%2B%20marketing)')} class="btn-primary">Get a Build + Grow plan <Icon name="arrow" class="h-4 w-4" /></a>
+          <a href={sister.url} target="_blank" rel="noopener" class="btn-ghost">Visit eraofmarketing.com <Icon name="ext" class="h-4 w-4" /></a>
+        </div>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="card p-6">
+          <p class="font-mono text-xs uppercase tracking-wider text-lime">Era of Tech · Build</p>
+          <ul class="mt-4 space-y-2.5 text-sm">{['Design & UX','Websites, Shopify & apps','Security & hosting','AI chatbots & automation'].map((x) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lime" />{x}</li>)}</ul>
+        </div>
+        <div class="card p-6">
+          <p class="font-mono text-xs uppercase tracking-wider text-lime">Era of Marketing · Grow</p>
+          <ul class="mt-4 space-y-2.5 text-sm">{['Performance ads (Meta, Google)','SEO & content','Branding & creative','Lead generation'].map((x) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lime" />{x}</li>)}</ul>
+        </div>
+        <p class="font-mono text-[11px] uppercase tracking-wider text-mute sm:col-span-2">{sister.name}: {sister.stats.join(' · ')}</p>
+      </div>
+    </div>
+  </div>
+</section>

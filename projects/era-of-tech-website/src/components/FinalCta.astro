@@ -1,0 +1,33 @@
+---
+import LeadForm from './LeadForm.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import Icon from './Icon.astro';
+import { contact } from '../data/site';
+import { waLink, bookingHref } from '../lib/url';
+---
+<section id="start" class="relative overflow-hidden border-t border-line">
+  <div class="grid-bg pointer-events-none absolute inset-0"></div>
+  <div class="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-lime/10 blur-3xl"></div>
+  <div class="container-x relative grid gap-12 py-20 sm:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="eyebrow mb-4">Start a project</p>
+      <h2 class="h-section">Tell us what you want to build. <span class="text-lime">Get a plan & quote in 24 hours.</span></h2>
+      <p class="lead mt-5">Free, no-obligation. A senior engineer, not a salesperson, reads every enquiry.</p>
+      <div class="mt-8 grid gap-3">
+        <a href={waLink()} target="_blank" rel="noopener" class="card flex items-center gap-4 p-4 transition hover:border-lime" data-track="whatsapp-cta">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-[#25D366] text-white"><WhatsAppIcon /></span>
+          <span><span class="block font-display text-white">WhatsApp</span><span class="text-sm text-mute">{contact.whatsappDisplay}</span></span>
+        </a>
+        <a href={`mailto:${contact.email}`} class="card flex items-center gap-4 p-4 transition hover:border-lime">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-char text-lime"><Icon name="mail" /></span>
+          <span><span class="block font-display text-white">Email</span><span class="text-sm text-mute">{contact.email}</span></span>
+        </a>
+        <a href={bookingHref()} target="_blank" rel="noopener" class="card flex items-center gap-4 p-4 transition hover:border-lime">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-lime text-black"><Icon name="cal" /></span>
+          <span><span class="block font-display text-white">Book a 20-min call</span><span class="text-sm text-mute">Pick a slot that suits you</span></span>
+        </a>
+      </div>
+    </div>
+    <div class="lg:col-span-7" data-reveal><LeadForm id="home-form" compact /></div>
+  </div>
+</section>

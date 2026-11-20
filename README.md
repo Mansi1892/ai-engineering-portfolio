@@ -8,7 +8,7 @@ I am a senior software engineer at SAP Labs working on SAP SuccessFactors, with 
 
 [Website source](./portfolio-website/) · [Smart Meal AI live application](https://smart-meal-ai-one.vercel.app) · [GitHub profile](https://github.com/Mansi1892)
 
-> This repository is source-first: project claims are tied to included implementations. Smart Meal AI is my original project. Other projects are included with permission and explicitly labeled as contributed/adapted work. See [ATTRIBUTION.md](./ATTRIBUTION.md).
+> This repository is source-first: project claims are tied to included implementations. Smart Meal AI and the Era of Tech website are original work. Other projects are included with permission and explicitly labeled as contributed/adapted work. See [ATTRIBUTION.md](./ATTRIBUTION.md).
 
 ## Featured project — Smart Meal AI
 
@@ -47,6 +47,7 @@ Key capabilities verified in the source:
 | Project | What is implemented | Stack | Status |
 |---|---|---|---|
 | [Smart Meal AI](./projects/smart-meal-ai/) | Full-stack household meal planner, LLM workflow, persistence, admin, support, and messaging approvals | Python, FastAPI, React 19, TanStack, Supabase, OpenAI-compatible APIs, Tavily | Source included; frontend build and Python tests validated |
+| [Era of Tech Website](./projects/era-of-tech-website/) | Static lead-conversion agency site for the Era of Tech web and AI studio | Astro, Tailwind, static | Design complete; placeholders pending |
 
 ### Contributed and adapted projects
 
@@ -117,6 +118,7 @@ AI-Portfolio/
 ├── portfolio-website/              # Recruiter-facing static portfolio
 ├── projects/
 │   ├── smart-meal-ai/              # Original full-stack AI application
+│   ├── era-of-tech-website/        # Original static lead-conversion agency site
 │   ├── rag-agentic/                # RAG / multi-stage agent workflows
 │   ├── ai-automation/              # n8n systems and operator interfaces
 │   └── ai-applications/             # Source-complete frontend prototypes
@@ -164,6 +166,16 @@ npm run dev -- --host 0.0.0.0 --port 8080
 ```
 
 Real Supabase and model credentials are required for data-backed and generation flows. Never commit the resulting `.env` files.
+
+### Era of Tech Website
+
+```bash
+cd projects/era-of-tech-website
+npm ci
+npm run dev
+```
+
+Open <http://localhost:4321>. `npm run build` writes the static site to `dist/`. Stats, prices, and testimonials in `src/data/site.ts` are placeholders.
 
 See the [local development guide](./docs/setup-guides/LOCAL_DEVELOPMENT.md) for every project family.
 

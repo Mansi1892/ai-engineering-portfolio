@@ -1,0 +1,85 @@
+---
+import { form, contact } from '../data/site';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import Icon from './Icon.astro';
+interface Props { id?: string; compact?: boolean }
+const { id = 'lead-form', compact = false } = Astro.props;
+const budgets = ['Under ₹50k / $600', '₹50k–1.5L / $600–1.8k', '₹1.5L–5L / $1.8k–6k', '₹5L+ / $6k+', 'Not sure yet'];
+const serviceOpts = ['Website / landing page', 'Shopify / e-commerce', 'Custom platform / web app', 'AI chatbot / automation', 'Build + Grow (site + marketing)', 'Redesign / security / hosting', 'Something else'];
+---
+<form id={id} class="card grid gap-4 p-5 sm:p-7" novalidate data-lead-form
+  data-provider={form.provider} data-key={form.accessKey} data-endpoint={form.endpoint} data-subject={form.subject}
+  data-email={contact.email} data-wa={contact.whatsappNumber}>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div><label class="label" for={`${id}-name`}>Name *</label><input class="field" id={`${id}-name`} name="name" required autocomplete="name" placeholder="Your name" /></div>
+    <div><label class="label" for={`${id}-email`}>Email *</label><input class="field" id={`${id}-email`} name="email" type="email" required autocomplete="email" placeholder="you@company.com" /></div>
+    <div><label class="label" for={`${id}-phone`}>Phone / WhatsApp</label><input class="field" id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" placeholder="+91 / +971 / +44 …" /></div>
+    <div><label class="label" for={`${id}-budget`}>Budget</label>
+      <select class="field" id={`${id}-budget`} name="budget"><option value="">Select a range</option>{budgets.map((b) => <option>{b}</option>)}</select></div>
+  </div>
+  <div><label class="label" for={`${id}-service`}>What do you need? *</label>
+    <select class="field" id={`${id}-service`} name="service" required><option value="">Choose a service</option>{serviceOpts.map((s) => <option>{s}</option>)}</select></div>
+  <div><label class="label" for={`${id}-message`}>Tell us about the project</label>
+    <textarea class="field min-h-28" id={`${id}-message`} name="message" rows={compact ? 3 : 5} placeholder="Goals, current website, timeline, anything useful…"></textarea></div>
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <button type="submit" class="btn-primary" data-track="lead-form-submit"><span data-label>Send & get a plan in 24h</span><Icon name="arrow" class="h-4 w-4" /></button>
+    <button type="button" class="btn-ghost" data-wa-send><WhatsAppIcon class="h-4 w-4" />Send via WhatsApp instead</button>
+  </div>
+  <p class="text-xs text-mute">{contact.replyPromise} No spam, ever.</p>
+  <p class="hidden rounded-xl border border-lime/40 bg-lime/10 p-3 text-sm text-white" role="status" aria-live="polite" data-status></p>
+</form>
+
+<script>
+  function collect(f: HTMLFormElement) {
+    const d = Object.fromEntries(new FormData(f).entries()) as Record<string, string>;
+    delete d.botcheck; return d;
+  }
+  function summary(d: Record<string, string>) {
+    return `Hi Era of Tech!\n\nName: ${d.name || ''}\nEmail: ${d.email || ''}\nPhone/WhatsApp: ${d.phone || ''}\nService: ${d.service || ''}\nBudget: ${d.budget || ''}\n\n${d.message || ''}`;
+  }
+  document.querySelectorAll<HTMLFormElement>('[data-lead-form]').forEach((f) => {
+    const status = f.querySelector<HTMLElement>('[data-status]')!;
+    const label = f.querySelector<HTMLElement>('[data-label]')!;
+    const show = (html: string) => { status.innerHTML = html; status.classList.remove('hidden'); };
+    const waUrl = () => `https://wa.me/${f.dataset.wa}?text=${encodeURIComponent(summary(collect(f)))}`;
+
+    // Prefill from cost estimator (?service=&message=)
+    const qs = new URLSearchParams(location.search);
+    for (const k of ['service', 'message', 'budget']) {
+      const v = qs.get(k); const el = f.elements.namedItem(k) as HTMLInputElement | null;
+      if (v && el) { if (el.tagName === 'SELECT' && ![...(el as unknown as HTMLSelectElement).options].some(o => o.value === v)) { (el as unknown as HTMLSelectElement).add(new Option(v, v)); } el.value = v; }
+    }
+
+    f.querySelector('[data-wa-send]')!.addEventListener('click', () => window.open(waUrl(), '_blank', 'noopener'));
+
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!f.reportValidity()) return;
+      if ((f.elements.namedItem('botcheck') as HTMLInputElement).checked) return;
+      const d = collect(f);
+      const { provider, key, endpoint, subject, email } = f.dataset;
+      label.textContent = 'Sending…';
+      try {
+        if (provider === 'web3forms' && key) {
+          const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ access_key: key, subject, from_name: 'Era of Tech website', ...d }) });
+          if (!r.ok) throw new Error();
+        } else if (provider === 'formspree' && endpoint) {
+          const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: subject, ...d }) });
+          if (!r.ok) throw new Error();
+        } else {
+          // No endpoint configured yet → open the visitor's email app (mailto fallback)
+          location.href = `mailto:${email}?subject=${encodeURIComponent(subject + ' – ' + (d.service || ''))}&body=${encodeURIComponent(summary(d))}`;
+          show(`Your email app should open with the details filled in. Nothing happened? <a class="underline text-lime" target="_blank" rel="noopener" href="${waUrl()}">Send it on WhatsApp</a> or email <a class="underline text-lime" href="mailto:${email}">${email}</a>.`);
+          label.textContent = 'Send & get a plan in 24h';
+          return;
+        }
+        f.reset();
+        show('Thanks! Your enquiry is in. We’ll reply within 2 working hours. Want a faster answer? <a class="underline text-lime" target="_blank" rel="noopener" href="https://wa.me/' + f.dataset.wa + '">Ping us on WhatsApp</a>.');
+      } catch {
+        show(`Something went wrong sending the form. Please <a class="underline text-lime" target="_blank" rel="noopener" href="${waUrl()}">send it on WhatsApp</a> or email <a class="underline text-lime" href="mailto:${email}">${email}</a>.`);
+      }
+      label.textContent = 'Send & get a plan in 24h';
+    });
+  });
+</script>

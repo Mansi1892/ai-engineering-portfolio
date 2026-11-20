@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import SectionHead from '../components/SectionHead.astro';
+import BuildGrow from '../components/BuildGrow.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Icon from '../components/Icon.astro';
+import { u } from '../lib/url';
+const stacks = [
+  { name: 'No-code (Wix / Webflow)', when: 'Brochure sites and fast launches that your team edits themselves', eg: 'Silver Storey, Dr Dolor' },
+  { name: 'Shopify', when: 'D2C and retail stores with payments, shipping and apps', eg: 'Camelia, ROBAM UAE' },
+  { name: 'Next.js / Astro + headless CMS', when: 'Performance, SEO, multi-market content and custom UX', eg: 'CARPL.ai, Plaiss' },
+  { name: 'Custom back end & AI', when: 'Products, portals, integrations, chatbots and automations', eg: 'Smart Meal AI, Lead Scoring' },
+];
+---
+<Base title="Services" description="Website design & development, Shopify e-commerce, custom web apps, AI chatbots & automation, security and hosting, plus marketing with Era of Marketing.">
+  <PageHero eyebrow="Services" title="Everything to launch and grow online, <span class='text-lime'>end to end.</span>" lead="Design, code, security and hosting from one senior team. AI when you want leverage, and marketing through our sister agency when you want growth.">
+    <div class="mt-8 flex flex-wrap gap-3"><a href={u('/contact/')} class="btn-primary">Get a free quote <Icon name="arrow" class="h-4 w-4" /></a><a href={u('/pricing/')} class="btn-ghost">See pricing</a></div>
+  </PageHero>
+  <section class="container-x py-16 sm:py-24"><ServicesGrid detailed /></section>
+  <section class="border-t border-line bg-coal/40 py-16 sm:py-24">
+    <div class="container-x">
+      <SectionHead eyebrow="How we choose a stack" title="The right tool for the job, not the one we like most." />
+      <div class="mt-10 overflow-hidden rounded-2xl border border-line">
+        {stacks.map((s) => (
+          <div class="grid gap-2 border-b border-line bg-coal p-6 last:border-0 md:grid-cols-12 md:gap-6" data-reveal>
+            <p class="font-display text-lg text-white md:col-span-3">{s.name}</p>
+            <p class="text-sm text-soft md:col-span-6">{s.when}</p>
+            <p class="font-mono text-xs uppercase tracking-wider text-mute md:col-span-3">e.g. {s.eg}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="container-x py-16 sm:py-24">
+    <SectionHead eyebrow="Security & hosting" title="Every launch ships secure by default." />
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {['HTTPS + HSTS everywhere','Content-Security-Policy & modern security headers','Spam-protected forms & least-privilege access','Automated backups & dependency updates','Uptime & performance monitoring','Core Web Vitals tuning (LCP < 2.5s)','GDPR / DPDP-friendly analytics setup','Hosting on Vercel, Cloudflare, AWS or GCP'].map((x) => <div class="card flex gap-3 p-5 text-sm" data-reveal><Icon name="shield" class="h-5 w-5 shrink-0 text-lime" />{x}</div>)}
+    </div>
+  </section>
+  <BuildGrow />
+  <FinalCta />
+</Base>

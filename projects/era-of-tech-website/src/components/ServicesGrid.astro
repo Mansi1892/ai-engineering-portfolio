@@ -1,0 +1,25 @@
+---
+import { services, sister } from '../data/site';
+import Icon from './Icon.astro';
+import { u } from '../lib/url';
+interface Props { detailed?: boolean }
+const { detailed = false } = Astro.props;
+const Tag = detailed ? 'div' : 'a';
+---
+<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+  {services.map((s, i) => (
+    <Tag id={detailed ? s.id : undefined} href={detailed ? undefined : u(`/services/#${s.id}`)} class="card group flex scroll-mt-24 flex-col p-7 transition hover:border-lime/60" data-reveal style={`transition-delay:${(i % 3) * 80}ms`}>
+      <span class="grid h-11 w-11 place-items-center rounded-xl bg-lime/10 text-lime"><Icon name={s.icon} /></span>
+      <h3 class="mt-5 text-xl font-semibold">{s.title}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-soft">{s.blurb}</p>
+      {detailed && <ul class="mt-5 space-y-2 text-sm">{s.points.map((pt) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lime" />{pt}</li>)}</ul>}
+      <p class="mt-auto pt-6 font-mono text-xs uppercase tracking-wider text-mute">From <span class="text-white">{s.from}</span> <span class="normal-case">(indicative)</span></p>
+    </Tag>
+  ))}
+  <a href={sister.url} target="_blank" rel="noopener" class="group flex flex-col rounded-2xl border border-dashed border-lime/50 bg-lime/[0.04] p-7 transition hover:bg-lime/[0.08]" data-reveal>
+    <span class="grid h-11 w-11 place-items-center rounded-xl bg-lime text-black"><Icon name="grow" /></span>
+    <h3 class="mt-5 text-xl font-semibold">Marketing, SEO, branding & lead gen</h3>
+    <p class="mt-2 text-sm leading-relaxed text-soft">Delivered with our sister agency {sister.name}: performance ads, SEO, content and creative that send customers to the site we build.</p>
+    <span class="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-lime">eraofmarketing.com <Icon name="ext" class="h-4 w-4" /></span>
+  </a>
+</div>

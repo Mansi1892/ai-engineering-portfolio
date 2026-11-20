@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { projects } from '../../data/site';
+---
+<Base title="Work & case studies" description="Case studies from Era of Tech: Shopify stores, custom Next.js platforms, lead-generation websites and launch sites for clients in India, UAE and the UK.">
+  <PageHero eyebrow="Work" title="Six businesses. <span class='text-lime'>Four platforms. Three countries.</span>" lead="Healthcare AI, D2C beauty, retail tech, interiors, home appliances and music. Every site is live, and every stack was chosen for the business, not our habits." />
+  <section class="container-x py-16 sm:py-24">
+    <div class="grid gap-x-6 gap-y-16 md:grid-cols-2">
+      {projects.map((p, i) => <ProjectCard p={p} eager={i < 2} level="h2" />)}
+    </div>
+  </section>
+  <FinalCta />
+</Base>

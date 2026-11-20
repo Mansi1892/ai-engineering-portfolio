@@ -1,0 +1,28 @@
+---
+import { team, teamExtra } from '../data/site';
+import Icon from './Icon.astro';
+---
+<div class="grid gap-5 md:grid-cols-3">
+  {team.map((m) => (
+    <article class="card flex flex-col p-7" data-reveal>
+      <div class="flex items-center gap-4">
+        <span class="grid h-14 w-14 place-items-center rounded-2xl bg-lime font-display text-lg font-semibold text-black" aria-hidden="true">{m.initials}</span>
+        <div><h3 class="text-xl font-semibold">{m.name}</h3><p class="text-sm text-lime">{m.role}</p></div>
+      </div>
+      <p class="mt-4 font-mono text-xs uppercase tracking-wider text-mute">{m.exp}</p>
+      <p class="mt-3 text-sm leading-relaxed text-soft">{m.bio}</p>
+      <div class="mt-auto flex gap-4 pt-5 text-sm">{m.links.map((l) => <a href={l.url} target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-soft hover:text-lime">{l.label}<Icon name="ext" class="h-3.5 w-3.5" /></a>)}</div>
+    </article>
+  ))}
+  <article class="card relative flex flex-col justify-between overflow-hidden p-7" data-reveal>
+    <div class="grid-bg pointer-events-none absolute inset-0 opacity-70"></div>
+    <div class="relative flex -space-x-3" aria-hidden="true">
+      {['#D7E935','#5B7CFA','#C2C2C2','#8D8D8D','#2B5672'].map((c) => <span class="h-11 w-11 rounded-full border-2 border-coal" style={`background:${c}`}></span>)}
+      <span class="grid h-11 w-11 place-items-center rounded-full border-2 border-coal bg-char text-xs text-white">+5</span>
+    </div>
+    <div class="relative mt-8">
+      <h3 class="text-xl font-semibold">{teamExtra}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-soft">Front-end, back-end, Shopify, DevOps, QA and design specialists who have shipped at product companies and fast-growing startups.</p>
+    </div>
+  </article>
+</div>

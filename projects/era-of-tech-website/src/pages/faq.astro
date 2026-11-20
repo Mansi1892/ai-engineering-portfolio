@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqList from '../components/FaqList.astro';
+import FinalCta from '../components/FinalCta.astro';
+---
+<Base title="FAQ" description="Answers on website cost, timelines, ownership, hosting, security, international clients, AI and marketing at Era of Tech.">
+  <PageHero eyebrow="FAQ" title="Questions, <span class='text-lime'>answered.</span>" lead="Can't find yours? Ask us on WhatsApp; we usually reply within a couple of hours." />
+  <section class="container-x py-16 sm:py-24"><FaqList schema /></section>
+  <FinalCta />
+</Base>

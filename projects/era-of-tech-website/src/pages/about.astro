@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import SectionHead from '../components/SectionHead.astro';
+import WhyUs from '../components/WhyUs.astro';
+import StatsBand from '../components/StatsBand.astro';
+import BuildGrow from '../components/BuildGrow.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { credentials } from '../data/site';
+---
+<Base title="About us" description="Era of Tech is founded by Rochak Singhal (AI Product Manager, ex SentiSum, Lenskart, The Media Ant) and Mansi Gangwar (Lead Backend Engineer, SAP Labs, ex-Huawei), with 10+ engineers.">
+  <PageHero eyebrow="About" title="A product company's engineering, <span class='text-lime'>for businesses of every size.</span>" lead="Era of Tech was started by an AI product manager and a lead backend engineer who were tired of seeing great businesses stuck with slow, insecure, brochure-ware websites. We build sites and systems the way product companies do: measured, secure and made to convert." />
+  <section class="container-x py-16 sm:py-24">
+    <SectionHead eyebrow="Founders & team" title="Who you'll work with." />
+    <div class="mt-10"><TeamGrid /></div>
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-8" data-reveal>
+      <span class="font-mono text-[11px] uppercase tracking-wider text-mute">Experience from</span>
+      {credentials.map((c) => <span class="font-display text-lg text-soft">{c}</span>)}
+    </div>
+  </section>
+  <StatsBand />
+  <section class="container-x grid gap-12 py-16 sm:py-24 lg:grid-cols-12">
+    <div class="lg:col-span-4"><SectionHead eyebrow="What we believe" title="Websites are sales tools, not brochures." /></div>
+    <div class="lg:col-span-8"><WhyUs /></div>
+  </section>
+  <BuildGrow />
+  <FinalCta />
+</Base>

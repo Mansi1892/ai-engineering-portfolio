@@ -4,7 +4,7 @@ This inventory is based on the copied source, manifests, workflow exports, and R
 
 ## Classification summary
 
-- **17 source projects/workflows:** one original application and sixteen contributed/adapted projects.
+- **18 source projects/workflows:** two original applications and sixteen contributed/adapted projects.
 - **10 prompt-engineering documents:** reusable written prompts, not executable applications.
 - **1 productivity reference document:** documentation only.
 - **0 copied submodules:** the only configured submodule was inaccessible.
@@ -15,6 +15,7 @@ This inventory is based on the copied source, manifests, workflow exports, and R
 | Project | Purpose | Stack / dependencies | Source location | UI / backend | Configuration and run path | Deployment evidence |
 |---|---|---|---|---|---|---|
 | Smart Meal AI | Personalized household meal planning and approval | Python 3, FastAPI, LangChain packages, OpenAI-compatible API, Tavily, Supabase, React 19, TanStack, Vite | `projects/smart-meal-ai` | React UI; FastAPI backend; Telegram/WhatsApp handlers | `.env.example`; `pip install -r requirements.txt`; `uvicorn api:app`; frontend `npm ci && npm run dev` | Combined Vercel scripts/config; Render config; live URL documented |
+| Era of Tech Website | Lead-conversion agency site for the Era of Tech web and AI studio, partnered with Era of Marketing | Astro 7, Tailwind CSS v4, static HTML | `projects/era-of-tech-website` | Static site; lead form posts to a third-party endpoint when configured | `npm ci && npm run build`; `npm run dev`; content in `src/data/site.ts` | Example GitHub Pages workflow at `deploy/github-pages-workflow.yml.example` (inactive in this monorepo); Vercel, Netlify, and Cloudflare Pages documented |
 | ConsultFlow AI | Institutional-RAG consulting deck generation through five gated stages | n8n, Gemini, Supabase, Google Drive/Slides APIs, QuickChart | `projects/rag-agentic/consultflow-ai` | Workflow exports; frontend screenshots only, no frontend source in this directory | Replace workflow placeholders, import `wf00`–`wf05` into n8n, configure provider credentials | Cloudflare/n8n/Supabase deployment described; no deployable frontend source included here |
 | Knoxx Outbound Intelligence | Evidence-backed account research, qualification, contacts, safe outreach, and engagement control | React 18/19, TanStack, Vite, Supabase/Postgres/RLS, Edge Functions, n8n, Node tests, Deno checks | `projects/ai-automation/knoxx-outbound-intelligence-n8n` | Two React UIs; Supabase backend; five n8n workflows | App and frontend `.env.example`; `npm run verify` after dependencies; import workflows in documented order | Lovable app metadata and live URLs; Supabase deployment guides |
 | AI Customer Support Chatbot | Intent classification, automated support, escalation, logging | n8n AI Agent, webhook, OpenAI/Gemini credentials | `projects/ai-automation/ai-customer-support-chatbot-n8n` | n8n webhook workflow; no standalone UI | Import JSON and connect messaging/model credentials | n8n-hosted by operator; no repo deployment config |
@@ -60,5 +61,6 @@ An upstream source repository declared `repo-showcase-quest` as a submodule. Rec
 ## Notes on claims and ownership
 
 - Smart Meal AI is original work from Mansi Gangwar's source repository.
+- Era of Tech Website is original work for Mansi Gangwar and Rochak Singhal's studio. Stats, prices, and testimonials in `src/data/site.ts` are placeholders.
 - All other projects in this inventory are contributed/adapted with permission and retain project documentation from the original source.
 - Original project READMEs may describe their creator's context or outcomes. Those statements are not presented as Mansi Gangwar's employment history or achievements in the portfolio website or main README.

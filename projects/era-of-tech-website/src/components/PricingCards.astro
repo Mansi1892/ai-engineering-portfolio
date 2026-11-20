@@ -1,0 +1,25 @@
+---
+import { packages, carePlan } from '../data/site';
+import Icon from './Icon.astro';
+import { u } from '../lib/url';
+---
+<div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+  {packages.map((p) => (
+    <div class={`relative flex flex-col rounded-2xl border p-7 ${p.highlight ? 'border-lime bg-lime/[0.05]' : 'border-line bg-coal'}`} data-reveal>
+      {p.highlight && <span class="absolute -top-3 left-7 rounded-full bg-lime px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-black">Best for D2C</span>}
+      <h3 class="text-xl font-semibold">{p.name}</h3>
+      <p class="mt-1 text-sm text-mute">{p.for}</p>
+      <p class="mt-6 font-mono text-xs uppercase tracking-wider text-mute">From</p>
+      <p class="font-display text-3xl font-semibold text-white">{p.inr}</p>
+      <p class="text-sm text-soft">≈ {p.usd} · {p.time}</p>
+      <ul class="mt-6 space-y-2.5 text-sm">{p.points.map((pt) => <li class="flex gap-2"><Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-lime" />{pt}</li>)}</ul>
+      <a href={u(`/contact/?service=${encodeURIComponent(p.name + ' package')}`)} class={`mt-8 ${p.highlight ? 'btn-primary' : 'btn-ghost'}`}>Get a fixed quote</a>
+    </div>
+  ))}
+</div>
+<div class="mt-5 flex flex-col gap-4 rounded-2xl border border-line bg-coal p-6 sm:flex-row sm:items-center sm:justify-between" data-reveal>
+  <div><p class="font-display text-lg text-white">Care plan · from {carePlan.inr} <span class="text-sm text-mute">(≈ {carePlan.usd})</span></p>
+  <p class="mt-1 text-sm text-soft">{carePlan.points.join(' · ')}</p></div>
+  <a href={u('/contact/?service=Redesign%20%2F%20security%20%2F%20hosting')} class="btn-ghost shrink-0">Add a care plan</a>
+</div>
+<p class="mt-4 font-mono text-[11px] uppercase tracking-wider text-mute">Indicative starting prices excl. taxes. Final fixed quote after a free discovery call.</p>
