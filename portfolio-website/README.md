@@ -1,6 +1,6 @@
 # Portfolio website
 
-A dependency-free, responsive static site for Mansi Gangwar's AI engineering portfolio. Project claims and counts come from the repository inventory; screenshots are copied from the corresponding source projects.
+A dependency-free, responsive static site for Mansi Gangwar's AI engineering portfolio. It presents all 17 projects together in one card grid, with optional category filters and clear ownership labels. Project claims and counts come from the repository inventory; screenshots are copied from the corresponding source projects.
 
 ## Run locally
 

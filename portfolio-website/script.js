@@ -2,6 +2,17 @@ const repoBase = "https://github.com/Mansi1892/ai-engineering-portfolio/tree/mai
 
 const projects = [
   {
+    name: "Smart Meal AI",
+    category: "application",
+    ownership: "original",
+    aiFocus: "Planning agent",
+    description: "A full-stack meal planner for Indian families that generates allergy-, nutrition-, and budget-aware weekly plans with shared groceries and approval flows.",
+    tags: ["FastAPI", "Python", "React 19", "Supabase", "LLM"],
+    path: "projects/smart-meal-ai",
+    liveUrl: "https://smart-meal-ai-one.vercel.app",
+    mark: "SM",
+  },
+  {
     name: "ConsultFlow AI",
     category: "agentic",
     aiFocus: "RAG system",
@@ -152,22 +163,30 @@ function projectCard(project, index) {
   const visual = project.image
     ? `<div class="project-image"><img src="${project.image}" alt="${project.alt}" loading="lazy" /><span class="project-image-label">Actual project screenshot</span></div>`
     : `<div class="project-abstract" aria-hidden="true"><span>${project.mark}</span></div>`;
+  const ownershipClass = project.ownership === "original" ? "original" : "contributed";
+  const ownershipLabel = project.ownership === "original" ? "Original project" : "Contributed / adapted";
+  const liveLink = project.liveUrl
+    ? `<a class="project-card-link" href="${project.liveUrl}" target="_blank" rel="noreferrer">Live application <span aria-hidden="true">↗</span></a>`
+    : "";
 
   return `
     <article class="project-card" data-category="${project.category}">
       ${visual}
       <div class="project-card-body">
         <div class="project-meta">
-          <span class="ownership contributed">Contributed / adapted</span>
-          <span>${String(index + 2).padStart(2, "0")}</span>
+          <span class="ownership ${ownershipClass}">${ownershipLabel}</span>
+          <span>${String(index + 1).padStart(2, "0")}</span>
         </div>
         ${project.aiFocus ? `<div class="project-ai-focus"><span aria-hidden="true"></span>${project.aiFocus}</div>` : ""}
         <h3>${project.name}</h3>
         <p>${project.description}</p>
         <div class="project-tags">${project.tags.map((tag) => `<span${highlightedAiTags.has(tag) ? ' class="ai-tag"' : ""}>${tag}</span>`).join("")}</div>
-        <a class="project-card-link" href="${repoBase}/${project.path}" target="_blank" rel="noreferrer">
-          Inspect source <span aria-hidden="true">↗</span>
-        </a>
+        <div class="project-card-actions">
+          ${liveLink}
+          <a class="project-card-link" href="${repoBase}/${project.path}" target="_blank" rel="noreferrer">
+            Inspect source <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </article>`;
 }

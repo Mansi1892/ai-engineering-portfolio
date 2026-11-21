@@ -531,6 +531,31 @@ h2 em {
   font-size: 15px;
 }
 
+.project-library-heading {
+  display: grid;
+  margin-top: 0;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+  gap: 60px;
+  align-items: end;
+}
+
+.project-library-heading h3 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.project-library-heading > p {
+  max-width: 420px;
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .spotlight {
   display: grid;
   overflow: hidden;
@@ -781,7 +806,7 @@ h2 em {
 
 .project-toolbar {
   display: flex;
-  margin: 90px 0 34px;
+  margin: 28px 0 34px;
   align-items: center;
   justify-content: space-between;
 }
@@ -984,7 +1009,7 @@ h2 em {
 
 .project-card-link {
   display: flex;
-  margin-top: 20px;
+  margin-top: 0;
   justify-content: space-between;
   color: var(--ink);
   font-size: 11px;
@@ -994,6 +1019,17 @@ h2 em {
 
 .project-card-link:hover {
   color: var(--coral);
+}
+
+.project-card-actions {
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.project-card-actions .project-card-link {
+  gap: 5px;
 }
 
 .architecture {
@@ -1421,12 +1457,17 @@ footer > a:last-child {
   }
 
   .projects-heading,
+  .project-library-heading,
   .experience-card {
     grid-template-columns: 1fr;
   }
 
   .projects-heading {
     gap: 28px;
+  }
+
+  .project-library-heading {
+    gap: 20px;
   }
 
   .project-toolbar {
